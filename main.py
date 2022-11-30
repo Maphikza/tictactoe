@@ -2,8 +2,8 @@
 My approach to creating this solution has been to think about the number of moves possible in the game and
 the number of possible winning combinations. I realised that it would be possible to boil down the winning
 combinations to 8 winning combinations if you sort the numbers in ascending order. My solution to this problem is based
-on this approach. This solution is not perfect, but it works for most cases. If I had more time or could do it again,
-I would play around with a few more approaches like trying to use list indexes for checking for winners.
+on this approach. This solution is not perfect, but it works for most cases. The game now works. set.intersection()
+solved it.
 """
 
 
@@ -13,7 +13,7 @@ I would play around with a few more approaches like trying to use list indexes f
 def winner_check(combo_to_test):
     winning_combinations_in_str = ['159', '258', '357', '456', '147', '123', '369', '789']
     for combo in winning_combinations_in_str:
-        if combo in combo_to_test:
+        if len(set(combo_to_test).intersection(combo)) >= 3:
             return True
 
 
@@ -23,7 +23,7 @@ def winner_check(combo_to_test):
 # step 2 is to join the numbers and make them 1 string.
 def move_to_str_converter(entry):
     sort_entry = sorted(entry)
-    converted_to_str = "".join(map(str, sort_entry))
+    converted_to_str = " ".join(map(str, sort_entry))
     return converted_to_str
 
 
